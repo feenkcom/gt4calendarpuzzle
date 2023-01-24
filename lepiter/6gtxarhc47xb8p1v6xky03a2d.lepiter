@@ -1,0 +1,175 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-01-24T12:15:33.124894-06:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-01-24T12:15:33.124894-06:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "bdQOPWivDQCS3GxaBJM+bQ=="
+				},
+				"code" : "board := Board layout: #(\n\t\t2r1000000\n\t\t2r1000000\n\t\t2r0000000\n\t\t2r0000000\n\t\t2r0000000\n\t\t2r0000000\n\t\t2r0000000\r\t\t2r0001111\n\t) width: 7."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-01-24T12:15:19.720059-06:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-01-24T12:15:33.125558-06:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "r6JBPGivDQCS1RJGBJM+bQ=="
+				},
+				"code" : "pieces := {\n\tPiece layout: #(\n\t\t2r111\n\t\t2r010\r\t\t2r010\n\t).\n\tPiece layout: #(\n\t\t2r011\n\t\t2r010\n\t\t2r110\n\t).\n\tPiece layout: #(\n\t\t2r110\n\t\t2r011\n\t).\n\tPiece layout: #(\n\t\t2r110\n\t\t2r111\n\t).\n\tPiece layout: #(\n\t\t2r001\n\t\t2r001\n\t\t2r111\n\t).\n\tPiece layout: #(\n\t\t2r1100\n\t\t2r0111\n\t).\n\tPiece layout: #(\n\t\t2r1000\n\t\t2r1111\n\t).\n\tPiece layout: #(\n\t\t2r101\n\t\t2r111\n\t).\r\tPiece layout: #(\r\t \t2r1111\r\t).\r\tPiece layout: #(\r\t\t2r111\r\t\t2r100\r\t)\n}.\nboard cover: 1@1; cover: 3@6; cover: 6@7."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-01-24T07:37:57.682784-06:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-01-24T12:15:19.721442-06:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "1aNRXGSvDQCOKhJeBJM+bQ=="
+				},
+				"code" : "[board allSolutionsWithPieces: pieces] asAsyncPromise."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-01-24T10:50:34.884716-06:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-01-24T13:02:09.936516-06:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "K4kuDWevDQCSEHTwBJM+bQ=="
+				},
+				"code" : "pieces first"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2023-01-24T07:37:57.682719-06:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2023-01-24T07:37:57.682719-06:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "unnamedPage",
+		"defaultTitle" : "Playground"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "b59d515c-64af-0d00-8e29-849b04933e6d"
+	}
+}
