@@ -5,5 +5,5 @@ Metacello new
 	repository: 'github://feenkcom/gt4calendarpuzzle:main/src';
 	baseline: 'GToolkit4CalendarPuzzle';
 	load.
-#BaselineOfGToolkitLenses asClass loadLepiter
+#BaselineOfGToolkit4CalendarPuzzle asClass loadLepiter
 ```
