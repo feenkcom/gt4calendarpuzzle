@@ -14,6 +14,20 @@ Piece class >> layout: aCollection [
 ]
 
 { #category : #accessing }
+Piece class >> standard3holePieces [
+	^ {self layout: #(2r111 2r010 2r010).
+		self layout: #(2r011 2r010 2r110).
+		self layout: #(2r110 2r011).
+		self layout: #(2r110 2r111).
+		self layout: #(2r001 2r001 2r111).
+		self layout: #(2r1100 2r0111).
+		self layout: #(2r1000 2r1111).
+		self layout: #(2r101 2r111).
+		self layout: #(2r1111).
+		self layout: #(2r111 2r100)}
+]
+
+{ #category : #accessing }
 Piece >> gtPermutationsFor: aView [
 	<gtView>
 	^ aView list

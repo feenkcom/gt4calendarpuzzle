@@ -15,6 +15,21 @@ Board class >> layout: aCollection width: anInteger [
 ]
 
 { #category : #accessing }
+Board class >> standard3holeVersion [
+	^ self
+		layout: #(
+			2r1000000 
+			2r1000000 
+			2r0000000
+			2r0000000 
+			2r0000000 
+			2r0000000 
+			2r0000000 
+			2r0001111)
+		width: 7
+]
+
+{ #category : #accessing }
 Board >> allSolutionsWithPieces: pieces [
 	| solutions |
 	solutions := OrderedCollection new.

@@ -63,14 +63,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-01-25T10:30:48.985279-06:00"
+						"dateAndTimeString" : "2023-01-25T10:30:09.321778-06:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "r6JBPGivDQCS1RJGBJM+bQ=="
 				},
-				"code" : "pieces := Piece standard3holePieces.\rboard\r\tcover: 1 @ 1;\r\tcover: 4 @ 6;\r\tcover: 7 @ 7"
+				"code" : "pieces := Piece standard3holePieces.\rboard\r\tcover: 1 @ 1;\r\tcover: 3 @ 6;\r\tcover: 6 @ 7"
 			},
 			{
 				"__type" : "pharoSnippet",
