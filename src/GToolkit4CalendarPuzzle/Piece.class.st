@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 Piece class >> layout: aCollection [ 
-	^self new layout: aCollection
+	^self new layout: (BitArray withAll: aCollection)
 ]
 
 { #category : #accessing }
@@ -28,11 +28,25 @@ Piece class >> standard3holePieces [
 ]
 
 { #category : #accessing }
+Piece >> gtGridFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Grid';
+		stencil: [ array gridElementWithOneColor: Color gray zeroColor: Color transparent]
+]
+
+{ #category : #accessing }
 Piece >> gtPermutationsFor: aView [
 	<gtView>
 	^ aView list
 		title: 'Permutations';
-		items: [ self permutations asOrderedCollection ]
+		items: [ self permutations asArray ];
+		itemStencil: [ BlScalableElement new
+				size: 200 @ 200;
+				margin: (BlInsets all: 10) ];
+		itemDataBinder: [ :eachElement :each :eachIndex | 
+			eachElement
+				addChild: (each gridElementWithOneColor: Color gray zeroColor: Color transparent) ]
 ]
 
 { #category : #accessing }
@@ -74,15 +88,13 @@ Piece >> permutations [
 	^ permutations
 		ifNil: [ | transposed flipped |
 			permutations := Set with: array.
-			permutations add: array reversed.
-			permutations
-				add: (flipped := array collect: [ :each | self invert: each length: self length ]).
-			permutations add: flipped reversed.
-			permutations add: (transposed := self transposedArray).
-			permutations add: transposed reversed.
-			permutations
-				add: (flipped := transposed collect: [ :each | self invert: each length: array size ]).
-			permutations add: flipped reversed.
+			permutations add: array flippedVertical.
+			permutations add: (flipped := array flippedHorizontal).
+			permutations add: flipped flippedVertical.
+			permutations add: (transposed := array transposed).
+			permutations add: transposed flippedVertical.
+			permutations add: (flipped := transposed flippedHorizontal).
+			permutations add: flipped flippedVertical.
 			permutations ]
 ]
 

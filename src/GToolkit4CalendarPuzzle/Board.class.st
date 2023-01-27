@@ -47,29 +47,10 @@ Board >> cover: aPoint [
 { #category : #accessing }
 Board >> gtGridFor: aView [
 	<gtView>
-	^ aView explicit
+	^ aView forward
 		title: 'Grid';
-		stencil: [ | container |
-			container := BlElement new
-					layout: (BlGridLayout new columnCount: width);
-					constraintsDo: [ :c | 
-						c vertical matchParent.
-						c horizontal matchParent ].
-			1
-				to: 8
-				do: [ :y | 
-					1
-						to: width
-						do: [ :x | 
-							| aPoint |
-							aPoint := x @ y.
-							container
-								addChild: (BlElement new
-										border: Color white;
-										background: ((array bitAt: aPoint) isZero
-												ifTrue: [ Color gray ]
-												ifFalse: [ Color transparent ])) ] ].
-			container ]
+		object: [ array ];
+		view: #gtGridFor:
 ]
 
 { #category : #accessing }
