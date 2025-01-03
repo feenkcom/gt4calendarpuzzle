@@ -41,6 +41,23 @@ Board class >> standard3holeVersion [
 		width: 7
 ]
 
+{ #category : #'as yet unclassified' }
+Board >> = anObject [
+	^ self class = anObject class and: [ array = anObject array ]
+]
+
+{ #category : #accessing }
+Board >> allBoardsAndSolutionsWithPieces: pieces [
+	| solutions |
+	solutions := Dictionary new.
+	self
+		solveWithPieces: pieces
+		at: 1
+		current: #()
+		solutionDo: [ :each :board | (solutions at: board ifAbsentPut: [ OrderedCollection new ]) add: each ].
+	^ solutions
+]
+
 { #category : #accessing }
 Board >> allSolutionsWithPieces: pieces [
 	| solutions |
@@ -49,11 +66,24 @@ Board >> allSolutionsWithPieces: pieces [
 	^ solutions
 ]
 
+{ #category : #'as yet unclassified' }
+Board >> array [
+	^ array
+]
+
 { #category : #accessing }
 Board >> cover: aPoint [
 	array
 		at: aPoint y
 		put: ((array at: aPoint y) bitOr: (1 bitShift: aPoint x - 1))
+]
+
+{ #category : #accessing }
+Board >> dayIndex [
+	1
+		to: 31
+		do: [ :i | (self isCovered: ((i - 1) \\ 7 + 1) @ ((i - 1) // 7 + 3)) ifFalse: [ ^ i ] ].
+	^ nil
 ]
 
 { #category : #accessing }
@@ -84,6 +114,16 @@ Board >> gtRowsFor: aView [
 	^ list
 ]
 
+{ #category : #'as yet unclassified' }
+Board >> hash [
+	^ array hash
+]
+
+{ #category : #accessing }
+Board >> isCovered: aPoint [
+	^ ((array at: aPoint y) bitAnd: (1 bitShift: aPoint x - 1)) ~= 0
+]
+
 { #category : #accessing }
 Board >> layout: aBitArray [
 	array := aBitArray
@@ -95,6 +135,13 @@ Board >> layout: aCollection width: anInteger [
 ]
 
 { #category : #accessing }
+Board >> monthName [
+	Date monthNames
+		doWithIndex: [ :each :i | (self isCovered: ((i - 1) \\ 6 + 1) @ ((i - 1) // 6 + 1)) ifFalse: [ ^ each ] ].
+	^ nil
+]
+
+{ #category : #accessing }
 Board >> place: arr at: aPoint [
 	| newArray |
 	newArray := array place: arr at: aPoint.
@@ -103,7 +150,7 @@ Board >> place: arr at: aPoint [
 
 { #category : #accessing }
 Board >> solveWithPieces: pieces at: anInteger current: anObject solutionDo: aBlock [
-	anInteger > pieces size ifTrue: [ ^ aBlock value: anObject ].
+	anInteger > pieces size ifTrue: [ ^ aBlock cull: anObject cull: self ].
 	(pieces at: anInteger)
 		permutationsDo: [ :arr | 
 			1
