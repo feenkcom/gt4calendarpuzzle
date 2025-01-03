@@ -2,9 +2,7 @@ Class {
 	#name : #Board,
 	#superclass : #Object,
 	#instVars : [
-		'array',
-		'width',
-		'max'
+		'array'
 	],
 	#category : #GToolkit4CalendarPuzzle
 }
@@ -12,6 +10,20 @@ Class {
 { #category : #accessing }
 Board class >> layout: aCollection width: anInteger [
 	^ self new layout: aCollection copy width: anInteger
+]
+
+{ #category : #accessing }
+Board class >> standard2holeVersion [
+	^ self
+		layout: #(
+			2r1000000 
+			2r1000000 
+			2r0000000
+			2r0000000 
+			2r0000000 
+			2r0000000 
+			2r1111000 )
+		width: 7
 ]
 
 { #category : #accessing }
@@ -59,9 +71,9 @@ Board >> gtRowsFor: aView [
 	| list |
 	list := aView columnedList
 			title: 'Rows';
-			items: [ 1 to: 8 ].
+			items: [ 1 to: array height ].
 	1
-		to: width
+		to: array width
 		do: [ :x | 
 			list
 				column: x asString
@@ -73,17 +85,20 @@ Board >> gtRowsFor: aView [
 ]
 
 { #category : #accessing }
+Board >> layout: aBitArray [
+	array := aBitArray
+]
+
+{ #category : #accessing }
 Board >> layout: aCollection width: anInteger [
-	array := BitArray withAll: aCollection andWidth: anInteger.
-	width := anInteger.
-	max := 1 bitShift: anInteger
+	array := BitArray withAll: aCollection andWidth: anInteger
 ]
 
 { #category : #accessing }
 Board >> place: arr at: aPoint [
 	| newArray |
 	newArray := array place: arr at: aPoint.
-	^ self class new layout: newArray width: width
+	^ self class new layout: newArray
 ]
 
 { #category : #accessing }
@@ -92,10 +107,10 @@ Board >> solveWithPieces: pieces at: anInteger current: anObject solutionDo: aBl
 	(pieces at: anInteger)
 		permutationsDo: [ :arr | 
 			1
-				to: array size - arr size + 1
+				to: array height - arr height + 1
 				do: [ :y | 
 					1
-						to: width
+						to: array width - arr width + 1
 						do: [ :x | 
 							| aPoint |
 							aPoint := x @ y.

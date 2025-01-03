@@ -73,7 +73,7 @@ BitArray >> bitAt: aPoint put: aBit [
 
 { #category : #accessing }
 BitArray >> canPlace: arr at: aPoint [
-	aPoint y + arr size - 1 > self size ifTrue: [ ^ false ].
+	aPoint y + arr height - 1 > self height ifTrue: [ ^ false ].
 	arr
 		doWithIndex: [ :value :y | 
 			| shifted |
@@ -81,6 +81,11 @@ BitArray >> canPlace: arr at: aPoint [
 			shifted >= max ifTrue: [ ^ false ].
 			((self at: y + aPoint y - 1) bitAnd: shifted) = 0 ifFalse: [ ^ false ] ].
 	^ true
+]
+
+{ #category : #'as yet unclassified' }
+BitArray >> doWithIndex: aBlock [
+	array doWithIndex: aBlock 
 ]
 
 { #category : #'as yet unclassified' }
@@ -154,6 +159,12 @@ BitArray >> place: arr at: aPoint [
 				at: y + aPoint y - 1
 				put: ((self at: y + aPoint y - 1) bitOr: (value bitShift: aPoint x - 1)) ].
 	^ newArray
+]
+
+{ #category : #accessing }
+BitArray >> postCopy [
+	super postCopy.
+	array := array copy
 ]
 
 { #category : #accessing }
