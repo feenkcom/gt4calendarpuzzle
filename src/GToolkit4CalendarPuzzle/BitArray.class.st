@@ -149,6 +149,14 @@ BitArray >> height [
 	^ array size
 ]
 
+{ #category : #'as yet unclassified' }
+BitArray >> inverted [
+	|result|
+	result := self copy.
+	result array: (array collect: [:each | each bitInvert]).
+	^result
+]
+
 { #category : #accessing }
 BitArray >> place: arr at: aPoint [
 	| newArray |

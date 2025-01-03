@@ -41,7 +41,7 @@ Board class >> standard3holeVersion [
 		width: 7
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #comparing }
 Board >> = anObject [
 	^ self class = anObject class and: [ array = anObject array ]
 ]
@@ -86,6 +86,20 @@ Board >> dayIndex [
 	^ nil
 ]
 
+{ #category : #printing }
+Board >> dayName [
+	Date dayNames
+		doWithIndex: [ :each :i | 
+			| y x |
+			i <= 4
+				ifTrue: [ x := 4.
+					y := 7 ]
+				ifFalse: [ x := 5.
+					y := 8 ].
+			(self isCovered: (x + ((i - 1) \\ 4)) @ y) ifFalse: [ ^ each ] ].
+	^ nil
+]
+
 { #category : #accessing }
 Board >> gtGridFor: aView [
 	<gtView>
@@ -114,14 +128,31 @@ Board >> gtRowsFor: aView [
 	^ list
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #hashing }
 Board >> hash [
 	^ array hash
+]
+
+{ #category : #'as yet unclassified' }
+Board >> invert [
+	array := array inverted
+]
+
+{ #category : #printing }
+Board >> is3holeVersion [
+	^ array height = 8
 ]
 
 { #category : #accessing }
 Board >> isCovered: aPoint [
 	^ ((array at: aPoint y) bitAnd: (1 bitShift: aPoint x - 1)) ~= 0
+]
+
+{ #category : #testing }
+Board >> isLegalDate [
+	^ self monthName notNil
+		and: [ self dayIndex notNil
+				and: [ self is3holeVersion not or: [ self dayName notNil ] ] ]
 ]
 
 { #category : #accessing }
@@ -146,6 +177,19 @@ Board >> place: arr at: aPoint [
 	| newArray |
 	newArray := array place: arr at: aPoint.
 	^ self class new layout: newArray
+]
+
+{ #category : #printing }
+Board >> printOn: aStream [
+	super printOn: aStream.
+	aStream nextPut: $(.
+	self monthName printOn: aStream.
+	aStream space.
+	self dayIndex printOn: aStream.
+	self is3holeVersion
+		ifTrue: [ aStream space.
+			self dayName printOn: aStream ].
+	aStream nextPut: $)
 ]
 
 { #category : #accessing }
